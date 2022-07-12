@@ -1,6 +1,7 @@
 import FirstComponent from './components/FirstComponent'
 
 import './App.css';
+import TemplateExpressions from './components/TemplateExpressions';
 
 // comment inline
 
@@ -13,6 +14,7 @@ function App() {
       { /* comment jsx */ }
       <h1>Fundamentos React</h1>
       <FirstComponent />
+      <TemplateExpressions />
     </div>
   );
 }
