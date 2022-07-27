@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Skyline from './assets/skyline.jpg'
+import ManageData from './components/ManageData';
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
       </div>
       <div>
         <img src="{Skyline}" alt="" />
+      </div>
+      <div>
+        <ManageData />
       </div>
     </div>
   );
