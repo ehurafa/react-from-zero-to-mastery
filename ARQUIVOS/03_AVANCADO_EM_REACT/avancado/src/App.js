@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Skyline from './assets/skyline.jpg'
 import ManageData from './components/ManageData';
+import ListRender from './components/ListRender';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
       </div>
       <div>
         <ManageData />
+      </div>
+      <div>
+        <ListRender />
       </div>
     </div>
   );
