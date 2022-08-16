@@ -4,6 +4,7 @@ import Skyline from './assets/skyline.jpg'
 import ManageData from './components/ManageData';
 import ListRender from './components/ListRender';
 import ConditionalRender from './components/ConditionRender';
+import ShowUserName from './components/ShowUserName'
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
       </div>
       <div>
         <ConditionalRender />
+      </div>
+      <div>
+        <ShowUserName name='Rafael' />
       </div>
     </div>
   );
