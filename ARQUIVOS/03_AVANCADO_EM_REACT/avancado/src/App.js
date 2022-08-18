@@ -6,6 +6,7 @@ import ListRender from './components/ListRender';
 import ConditionalRender from './components/ConditionRender';
 import ShowUserName from './components/ShowUserName'
 import CarDetails from './components/CarDetails'
+import Fragment from './components/Fragment'
 
 function App() {
 
@@ -43,6 +44,10 @@ function App() {
         {cars.map((car) => (
           <CarDetails brand={car.brand} color={car.color} newCar={car.newCar} km={car.km}/>
         ))}
+      </div>
+
+      <div>
+        <Fragment />
       </div>
     </div>
   );
