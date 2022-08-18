@@ -7,6 +7,7 @@ import ConditionalRender from './components/ConditionRender';
 import ShowUserName from './components/ShowUserName'
 import CarDetails from './components/CarDetails'
 import Fragment from './components/Fragment'
+import Container from './components/Container'
 
 function App() {
 
@@ -48,6 +49,12 @@ function App() {
 
       <div>
         <Fragment />
+      </div>
+
+      <div>
+        <Container myValue="teste">
+          <p>Este é o conteúdo!</p>
+        </Container>
       </div>
     </div>
   );
