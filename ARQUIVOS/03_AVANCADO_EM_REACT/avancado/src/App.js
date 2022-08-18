@@ -30,7 +30,8 @@ function App() {
         <ShowUserName name='Rafael' />
       </div>
       <div>
-        <CarDetails brand={'Chevrolet'} km={1000} color={'azul'}/>
+        <CarDetails brand={'Chevrolet'} km={1000} color={'azul'} newCar={true}/>
+        <CarDetails brand={'Ford'} km={0} color={'verde'} newCar={false} />
       </div>
     </div>
   );
