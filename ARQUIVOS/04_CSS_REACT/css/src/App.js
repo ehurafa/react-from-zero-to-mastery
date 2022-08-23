@@ -7,6 +7,7 @@ function App() {
 
   const n = 1
   const [name, setName] = useState('Rafael');
+  const redTitle = true
 
   return (
     <div className="App">
@@ -25,6 +26,8 @@ function App() {
           ? { color: 'green', backgroundColor: '#000' }
           : null
         }>Teste</h2>
+
+        <h2 className={ redTitle ? 'red-title' : 'title' }>Este título vai ter classe dinâmica</h2>
     </div>
   );
 }
