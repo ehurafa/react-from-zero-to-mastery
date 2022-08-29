@@ -13,7 +13,7 @@ function MyForm() {
         setName(e.target.value)
     }
 
-    console.log(name)
+    console.log(email)
 
 
     return (
@@ -27,7 +27,7 @@ function MyForm() {
                 </div>
                 <label>
                     <span>E-mail</span>
-                    <input type="email" name="email" />
+                    <input type="email" name="email" onChange={(e) => setEmail(e.target.value)}/>
                 </label>
                 <input type="submit" value="Enviar" />
             </form>
