@@ -5,7 +5,7 @@ import MyForm from './components/MyForm'
 function App() {
   return (
     <div className="App">
-      <MyForm user={{ name: 'Obama', email: 'president@presidente.com'}}/>
+      <MyForm user={{ name: 'Obama', email: 'president@presidente.com', bio: 'Estusiasta', role: 'admin'}}/>
     </div>
   );
 }
