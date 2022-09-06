@@ -1,6 +1,9 @@
 import './GameOver.css'
-function GameOver() {
-    return (<div>game over</div>);
+function GameOver({retry}) {
+    return (<div>
+        game over
+        <button onClick={retry}>resetar o jogo</button>
+        </div>);
 }
 
 export default GameOver;
