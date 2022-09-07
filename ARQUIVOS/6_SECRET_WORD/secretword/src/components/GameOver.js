@@ -1,7 +1,7 @@
 import './GameOver.css'
 function GameOver({retry}) {
     return (<div>
-        game over
+        <h1>Game over</h1>
         <button onClick={retry}>resetar o jogo</button>
         </div>);
 }
