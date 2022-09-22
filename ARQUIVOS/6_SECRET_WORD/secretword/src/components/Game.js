@@ -20,6 +20,8 @@ function Game(
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        console.log('A ', letter)
+
         verifyLetter(letter)
 
         setLetter('')
