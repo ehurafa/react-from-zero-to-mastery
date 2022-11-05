@@ -14,6 +14,10 @@ function Game(
     }
     ) {
 
+
+      
+        
+
     const [letter, setLetter] = useState('')
     const letterInputRef = useRef(null)
 
@@ -30,6 +34,7 @@ function Game(
     }
     
     return (
+        
         <div className="game">
             <p className="points">
                 <span>Pontuação: {score}</span>
@@ -60,7 +65,7 @@ function Game(
                         required
                         onChange={(e) => setLetter(e.target.value)}
                     />
-                    <button onClick={verifyLetter}>Jogar!</button>
+                    <button>Jogar!</button>
                 </form>inalizar o jogo
             </div>
             <div className="wrongLettersContainer">

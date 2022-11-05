@@ -2,7 +2,7 @@
 import './App.css';
 
 // REACT
-import { useCallback, useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // data 
 import { wordsList } from './data/words'
@@ -18,9 +18,11 @@ const stages = [
   { id: 3, name: 'end' }
 ]
 
+const guessesQuantify = 3
+
 function App() {
   const [gameStage, setGameStage] = useState(stages[0].name)
-  const [words, setWords] = useState(wordsList)
+  const [words] = useState(wordsList)
 
   const [pickedWord, setPickedWord] = useState('');
   const [pickedCategory, setPickedCategory] = useState('');
@@ -28,7 +30,7 @@ function App() {
 
   const [guessedLetters, setGuessedLetters] = useState([])
   const [wrongLetters, setWrongLetters] = useState([])
-  const [guesses, setGuesses] = useState()
+  const [guesses, setGuesses] = useState(3)
   const [score, setScore] = useState(0)
 
   const pickWordAndCategory = () => {
@@ -36,12 +38,9 @@ function App() {
     const categories = Object.keys(words)
     const category = categories[Math.floor(Math.random() * Object.keys(categories).length)]
 
-    console.log(category)
 
     // pick a random word
     const word = words[category][Math.floor(Math.random() * words[category].length)]
-
-    console.log(word)
 
     return {word, category}
   }
@@ -53,13 +52,10 @@ function App() {
 
     const { word, category } = pickWordAndCategory()
 
-    console.log(word, category)
     // create an array of letters
     let wordLetters = word.split("")
 
     wordLetters = wordLetters.map((l) => l.toLowerCase())
-
-    console.log(wordLetters)
 
     // fill states
     setPickedWord(word)
@@ -71,8 +67,7 @@ function App() {
 
   // process the letter input
   const verifyLetter = (letter) => {
-    console.log('letter ', letter  )
-    const normalizedLetter = letter.toLowerCase()
+    const normalizedLetter = String(letter).toLowerCase() || ''
 
     // check if letter has already been utilized
     if(guessedLetters.includes(normalizedLetter) || wrongLetters.includes(normalizedLetter)) return 
@@ -88,15 +83,31 @@ function App() {
         ...actualWrongLetters,
         normalizedLetter
       ])
+
+      setGuesses((actualGuesses) => actualGuesses -1)
     }
 
+
+  }
+  const clearLetterStates = () => {
+    setGuessedLetters([])
+    setWrongLetters([])
   }
 
-  console.log('actualGuessedLetters ', guessedLetters)
-    console.log('wrongLetters ', wrongLetters)
+  useEffect(() => {
+
+    if(guesses <= 0) {
+      // reset all states
+      clearLetterStates()
+      setGameStage(stages[2].name)
+    }
+
+  }, [guesses])
 
   // restarts the game
   const retry = () => {
+    setScore(0)
+    setGuesses(guessesQuantify)
     setGameStage(stages[0].name)
   }
 
@@ -111,6 +122,7 @@ function App() {
         guessedLetters={guessedLetters}
         wrongLetters={wrongLetters}
         guesses={guesses}
+        score={score}
         />}
       {gameStage === 'end' && <GameOver retry={retry} />}
 
