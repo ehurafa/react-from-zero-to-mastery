@@ -24,6 +24,21 @@
       "name": "Chinelo",
       "price": "30",
       "id": 5
+    },
+    {
+      "name": "Cueca",
+      "price": "20",
+      "id": 6
+    },
+    {
+      "name": "Cueca",
+      "price": "20",
+      "id": 7
+    },
+    {
+      "name": "Cadeira",
+      "price": "299",
+      "id": 8
     }
   ]
 }
