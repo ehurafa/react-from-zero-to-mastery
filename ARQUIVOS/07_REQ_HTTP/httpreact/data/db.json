@@ -1,24 +1,29 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "Camisa",
-            "price": 59.9
-        },
-        {
-            "id": 2,
-            "name": "Calça vermalha",
-            "price": 200
-        },
-        {
-            "id": 3,
-            "name": "Boné Aba Reta",
-            "price": 120.9
-        },
-        {
-            "id": 4,
-            "name": "Tênis",
-            "price": 650.5
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "Camisa",
+      "price": 59.9
+    },
+    {
+      "id": 2,
+      "name": "Calça vermalha",
+      "price": 200
+    },
+    {
+      "id": 3,
+      "name": "Boné Aba Reta",
+      "price": 120.9
+    },
+    {
+      "id": 4,
+      "name": "Tênis",
+      "price": 650.5
+    },
+    {
+      "name": "Chinelo",
+      "price": "30",
+      "id": 5
+    }
+  ]
 }
