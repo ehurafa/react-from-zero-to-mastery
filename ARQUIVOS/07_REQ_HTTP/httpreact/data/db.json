@@ -39,6 +39,11 @@
       "name": "Cadeira",
       "price": "299",
       "id": 8
+    },
+    {
+      "name": "tetse",
+      "price": "10",
+      "id": 9
     }
   ]
 }
