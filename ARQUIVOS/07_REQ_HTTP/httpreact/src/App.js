@@ -13,7 +13,7 @@ function App() {
   const [products, setProducts] = useState([])
 
   // 4 - custom hook
-  const { data: items } = useFetch(url)
+  const { data: items, httpConfig } = useFetch(url)
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
@@ -45,7 +45,7 @@ function App() {
       price
     }
 
-    const res = await fetch(url, {
+    /* const res = await fetch(url, {
       method: 'POST',
       headers: {
         "Content-Type": 'application/json'
@@ -56,7 +56,10 @@ function App() {
     // 3 - carregamento dinamico
     const addedProduct = await res.json()
 
-    setProducts((prevProduscts) => [...prevProduscts, addedProduct])
+    setProducts((prevProduscts) => [...prevProduscts, addedProduct]) */
+
+    // 5 - refatorando o post
+    httpConfig(product, 'POST')
 
     setName('')
     setPrice('')

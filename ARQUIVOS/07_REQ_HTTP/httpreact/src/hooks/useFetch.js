@@ -3,6 +3,25 @@ import { useState, useEffect } from 'react'
 // 4 - custom hook
 export const useFetch = (url) => {
     const [data, setData] = useState(null)
+    const [method, setMethod] = useState(null)
+    const [callFetch, setCallFecth] = useState(false)
+
+    const httpConfig = (data, method) => {
+        console.log('foo ', data, method)
+       if(method === 'POST') {
+        setConfig({
+            method,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        setMethod(method)
+       } 
+    }
+
+    // 5 - post refactory
+    const [config, setConfig] = useState(null)
 
     useEffect(() => {
 
@@ -17,7 +36,25 @@ export const useFetch = (url) => {
 
         fetchData()
 
-    }, [url])
+    }, [url, callFetch])
 
-    return { data }
+    // 5 - post refactory
+    useEffect(() => {
+
+        const httpRequest = async () => {
+            if(method === 'post') {
+                let fetchOptions = [url, config]
+    
+                const res = await fetch(...fetchOptions)
+                const json = await res.json()
+    
+                setCallFecth(json)
+            }
+        }
+
+        httpRequest()
+
+    }, [config, method, url])
+
+    return { data, httpConfig }
 }
