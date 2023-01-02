@@ -14,7 +14,7 @@ nav a:hover {
     color: #ccc;
 }
 
-.active {
+.active, .esta-ativo {
     background-color: #000;
     color: #fff;
 }
