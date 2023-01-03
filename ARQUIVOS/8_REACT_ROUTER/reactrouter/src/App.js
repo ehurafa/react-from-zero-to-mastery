@@ -9,10 +9,12 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Product from './pages/Product'
 import Info from './pages/Info'
+import Search from './pages/Search';
 import NotFound from './pages/NotFound'
 
 // components
 import Navbar from './components/Navbar'
+import SearchForm from './components/SearchForm';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
       <BrowserRouter>
         {/* 2 - links com react router */}
         <Navbar />
+        {/* 9 - search */}
+        <SearchForm />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -29,6 +33,8 @@ function App() {
           {/* 6 - nested route */}
           <Route path="/products/:id/info" element={<Info /> } />
           {/* 7 - no match route */}
+          {/* 9 - search */}
+          <Route path="/search" element={<Search /> } />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
