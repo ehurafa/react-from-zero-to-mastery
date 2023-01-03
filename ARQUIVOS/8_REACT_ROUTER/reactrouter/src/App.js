@@ -2,7 +2,7 @@
 import './App.css';
 
 // 1 - config react router
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 // pages
 import Home from './pages/Home'
@@ -35,6 +35,8 @@ function App() {
           {/* 7 - no match route */}
           {/* 9 - search */}
           <Route path="/search" element={<Search /> } />
+          {/* 10 - redirect */}
+          <Route path="/company" element={<Navigate to="/about" /> } />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
