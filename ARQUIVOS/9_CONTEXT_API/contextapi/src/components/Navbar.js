@@ -4,9 +4,9 @@ import './Navbar.css'
 const Navbar = () => {
   return (
     <nav>
-        <Link to="/pagea">Page A</Link>
-        <Link to="/pageb">Page B</Link>
-        <Link to="/pagec">Page C</Link>
+        <Link to="/">Home</Link>
+        <Link to="/about">Sobre</Link>
+        <Link to="/product">Produto</Link>
     </nav>
   )
 }
