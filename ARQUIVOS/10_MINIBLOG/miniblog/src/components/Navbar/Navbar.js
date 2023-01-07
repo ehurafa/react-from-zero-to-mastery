@@ -4,14 +4,14 @@ import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <nav>
-        <NavLink to="/">Mini Blog <span>React</span></NavLink>
-        <ul>
+    <nav className={styles.navbar}>
+        <NavLink to="/" className={styles.brand}>Mini Blog <span>React</span></NavLink>
+        <ul className={styles.links_list}>
             <li>
-                <NavLink to="/" >Home</NavLink>
+                <NavLink to="/" className={({isActive}) => (isActive ? styles.active : '')}>Home</NavLink>
             </li>
             <li>
-                <NavLink to="/about" >Sobre</NavLink>
+                <NavLink to="/about" className={({isActive}) => (isActive ? styles.active : '')}>Sobre</NavLink>
             </li>
         </ul>
     </nav>
