@@ -46,12 +46,14 @@ export const useInsertDocument = (docCollection) => {
                 collection(db, docCollection),
                 newDocument
             )
+            console.log('insertedDocument ', insertedDocument)
             checkCancelBeforeDispatch({
                 type: 'INSERTED_DOC',
                 payload: insertedDocument
             })
 
         } catch (error) {
+            console.log('foo ', error)
             checkCancelBeforeDispatch({
                 type: 'ERROR',
                 payload: error.message
