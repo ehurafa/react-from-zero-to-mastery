@@ -25,23 +25,21 @@ export const useFetchDocuments = (docCollection, search =  null, uid = null) => 
 
                 let q
                 q = await query(collectionRef, orderBy('createdAt', 'desc'))
+                console.log('q ', q)
 
                 await onSnapshot(q, (querySnapshot) => {
                     setDocuments(
                         querySnapshot.docs.map((doc) => ({
                             id: doc.id,
-                            ...doc.data()
+                            ...doc.data(),
                         }))
                     )
                 })
-
                 setLoading(false)
 
-            } catch(error) {
+            } catch(error) {    
                 console.log(error.message)
-
                 setError(error.message)
-
                 setLoading(false)
             }
         }
