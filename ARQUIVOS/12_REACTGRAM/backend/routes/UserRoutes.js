@@ -6,7 +6,10 @@ router.use('/api/users', require('./UserRoutes'))
 // Controller
 const { register } = require('../controllers/UserController')
 
+// Middlewares
+const validate = require('../middlewares/handleValidation')
+
 // Router
-router.post('/register', register)
+router.post('/register', validate, register)
 
 module.exports = router
