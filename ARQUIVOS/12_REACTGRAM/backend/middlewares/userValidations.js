@@ -1,6 +1,6 @@
 const { body } = require('express-validator')
 
-const userCreateValidaion = () => {
+const userCreateValidation = () => {
     return [
         body('name')
             .isString()
@@ -16,7 +16,7 @@ const userCreateValidaion = () => {
             .isString()
             .withMessage('A senha é obrigatória')
             .isLength({ min: 5 })
-            .withMessa('A senha precisa ter no mínimo 5 caracteres.'),
+            .withMessage('A senha precisa ter no mínimo 5 caracteres.'),
         body('confirmPassword')
             .isString()
             .withMessage('A confirmação de senha é obrigatória')

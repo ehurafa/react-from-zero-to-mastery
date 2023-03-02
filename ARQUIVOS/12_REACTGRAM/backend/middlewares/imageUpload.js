@@ -1,8 +1,8 @@
-const mlter = require("multer")
+const multer = require("multer")
 const path = require("path")
 
 // Destination to store image
-const imageStore = multer.diskStorage({
+const imageStorage = multer.diskStorage({
     destination: (req, file, cb) => {
         let folder = ""
 

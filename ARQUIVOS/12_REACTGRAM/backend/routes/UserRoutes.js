@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-router.use('/api/users', require('./UserRoutes'))
+// router.use('/api/users', require('./UserRoutes'))
 
 // Controller
 const {
@@ -9,7 +9,7 @@ const {
     login,
     getCurrentUser,
     update,
-    getUserByid
+    getUserById
 } = require('../controllers/UserController');
 
 // Middlewares
@@ -20,8 +20,9 @@ const {
     userUpdateValidation
     } = require('../middlewares/userValidations')
 const authGuard = require('../middlewares/authGuard');
+const { imageUpload } = require("../middlewares/imageUpload");
 
-// Router
+// Routes
 router.post('/register', userCreateValidation(), validate, register)
 router.post('/login', loginValidation(), validate, login)
 router.get('/profile', authGuard, getCurrentUser)

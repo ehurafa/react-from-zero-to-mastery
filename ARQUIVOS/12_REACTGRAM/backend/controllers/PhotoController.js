@@ -1,7 +1,7 @@
 const Photo = require('../models/Photo');
 const User = require("../models/User");
 
-const mongoose = require("mogoose");
+const mongoose = require("mongoose");
 
 // Isert a photo, with an user related to it
 const insertPhoto = async (req, res) => {
@@ -32,14 +32,13 @@ const insertPhoto = async (req, res) => {
 }
 
 // remove a photo from db
-
 const deletePhoto = async(req, res) => {
     const { id } = req.params 
 
     const reqUser = req.user 
 
     try {
-        const photo = await Photo.findById(mogoose.Types.ObjectId(id));
+        const photo = await Photo.findById(mongoose.Types.ObjectId(id));
 
         // Check if photo exists 
         if (!photo) {
@@ -70,7 +69,7 @@ const deletePhoto = async(req, res) => {
 };
 
 // Get all photos
-const getAllPhotos = async(req, res) {
+const getAllPhotos = async(req, res) => {
 
     const photos = await Photo.find({})
         .sort([["createdAt", -1]])
