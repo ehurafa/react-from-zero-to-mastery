@@ -24,8 +24,6 @@ const EditProfile = () => {
     const [bio, setBio] = useState("")
     const [previewImage, setPreviewImage] = useState("")
 
-    // states
-
     // Load user data 
     useEffect(() => {
         dispatch(profile())
@@ -39,8 +37,6 @@ const EditProfile = () => {
             setBio(user.bio)
         }
     }, [user])
-
-    console.log(user)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -75,7 +71,7 @@ const EditProfile = () => {
             <input type="email" placeholder="E-mail" disabled value={email || ''} />
             <label>
                 <span>Imagem do Perfil:</span>
-                <input type="file"/>
+                <input type="file" onChange={handleFile} />
             </label>
             <label>
                 <span>Bio:</span>
