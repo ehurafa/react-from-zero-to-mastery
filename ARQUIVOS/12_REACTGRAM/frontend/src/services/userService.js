@@ -1,5 +1,5 @@
 
-import { api, requestConfig } from '../../utils/config'
+import { api, requestConfig } from '../utils/config'
 
 // Get user details
 const profile = async(data, token) => {
