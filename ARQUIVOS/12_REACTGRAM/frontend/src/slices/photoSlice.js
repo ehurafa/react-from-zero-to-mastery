@@ -54,11 +54,7 @@ export const deletePhoto = createAsyncThunk(
   }
 )
 
-// Get all photos
-export const getPhotos = createAsyncThunk("photo/getall", async() => {
-  const data = await photoService.getPhotos();
-  return data;
-})
+
 
 export const photoSlice = createSlice({
     name: "photo",
@@ -202,6 +198,14 @@ export const photoSlice = createSlice({
             state.photos = action.payload;
           })
         }
+})
+
+// Get all photos
+export const getPhotos = createAsyncThunk("photo/getall", async(_, thunkAPI) => {
+  
+  const token = thunkAPI.getState().auth.user.token
+  const data = await photoService.getPhotos(token);
+  return data;
 })
 
 // Update a photo
