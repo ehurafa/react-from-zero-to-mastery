@@ -10,6 +10,7 @@ import { useAuth } from './hooks/useAuth';
 import Home from './pages/Home/Home'
 import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
+import Search from './pages/Search/Search';
 
 // components
 import Navbar from './components/Navbar';
@@ -36,6 +37,7 @@ function App() {
             <Route path="/users/:id" element={ auth ? <Profile /> : <Navigate to="/login" />}/>
             <Route path="/login" element={!auth ? <Login /> : <Navigate to="/" />}/>
             <Route path="/register" element={!auth ? <Register /> : <Navigate to="/" />}/>
+            <Route path="/search" element={ auth ? <Search /> : <Navigate to="/login" />}/>
             <Route path="/photos/:id" element={ auth ? <Photo /> : <Navigate to="/login" />}/>
           </Routes>
         </div>
