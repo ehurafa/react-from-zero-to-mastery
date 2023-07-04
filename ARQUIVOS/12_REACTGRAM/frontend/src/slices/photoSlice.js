@@ -54,7 +54,79 @@ export const deletePhoto = createAsyncThunk(
   }
 )
 
+// Get all photos
+export const getPhotos = createAsyncThunk("photo/getall", async(_, thunkAPI) => {
+  
+  const token = thunkAPI.getState().auth.user.token
+  const data = await photoService.getPhotos(token);
+  return data;
+})
 
+// Update a photo
+const updatePhoto = createAsyncThunk(
+  "photo/update",
+  async(photoData, thunkAPI) => {
+    const token = thunkAPI.getState().auth.user.token
+    const data = await photoService.updatePhoto({ title: photoData.title }, photoData.id, token)
+
+     // Check for errors
+     if(data.errors ) {
+          return thunkAPI.rejectWithValue(data.errors[0])
+      }
+
+    return data
+  }
+)
+
+// Get photo by ID
+export const getPhoto = createAsyncThunk("photo/getphoto", async (id, thunkAPI) => {
+  const token = thunkAPI.getState().auth.user.token
+  const data = await photoService.getPhoto(id, token);
+
+  return data;
+})
+
+// Like a photo
+export const like = createAsyncThunk("photo/like", async(id, thunkAPI) => {
+  const token = thunkAPI.getState().auth.user.token
+  const data = await photoService.like(id, token);
+
+  // Check for errors
+    if(data.errors ) {
+        return thunkAPI.rejectWithValue(data.errors[0])
+    }
+
+  return data;
+})
+
+// Add comment to a photo
+export const comment = createAsyncThunk("photo/comment", async(commentData, thunkAPI) => {
+  const token = thunkAPI.getState().auth.user.token
+  const data = await photoService.comment(
+    { comment: commentData.comment },
+    commentData.id,
+    token
+    );
+
+  // Check for errors
+    if(data.errors ) {
+        return thunkAPI.rejectWithValue(data.errors[0])
+    }
+
+  return data;
+})
+
+// Search photo by title
+export const searchPhotos = createAsyncThunk(
+  "photo/search",
+  async (query, thunkAPI) => {
+    const token = thunkAPI.getState().auth.user.token;
+
+    const data = await photoService.searchPhotos(query, token);
+
+    return data;
+  }
+);
 
 export const photoSlice = createSlice({
     name: "photo",
@@ -197,69 +269,17 @@ export const photoSlice = createSlice({
             state.error = null;
             state.photos = action.payload;
           })
+          .addCase(searchPhotos.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+          })
+          .addCase(searchPhotos.fulfilled, (state, action) => {
+            state.loading = false;
+            state.success = true;
+            state.error = null;
+            state.photos = action.payload;
+          })
         }
-})
-
-// Get all photos
-export const getPhotos = createAsyncThunk("photo/getall", async(_, thunkAPI) => {
-  
-  const token = thunkAPI.getState().auth.user.token
-  const data = await photoService.getPhotos(token);
-  return data;
-})
-
-// Update a photo
-const updatePhoto = createAsyncThunk(
-  "photo/update",
-  async(photoData, thunkAPI) => {
-    const token = thunkAPI.getState().auth.user.token
-    const data = await photoService.updatePhoto({ title: photoData.title }, photoData.id, token)
-
-     // Check for errors
-     if(data.errors ) {
-          return thunkAPI.rejectWithValue(data.errors[0])
-      }
-
-    return data
-  }
-)
-
-// Get photo by ID
-export const getPhoto = createAsyncThunk("photo/getphoto", async (id, thunkAPI) => {
-  const token = thunkAPI.getState().auth.user.token
-  const data = await photoService.getPhoto(id, token);
-
-  return data;
-})
-
-// Like a photo
-export const like = createAsyncThunk("photo/like", async(id, thunkAPI) => {
-  const token = thunkAPI.getState().auth.user.token
-  const data = await photoService.like(id, token);
-
-  // Check for errors
-    if(data.errors ) {
-        return thunkAPI.rejectWithValue(data.errors[0])
-    }
-
-  return data;
-})
-
-// Add comment to a photo
-export const comment = createAsyncThunk("photo/comment", async(commentData, thunkAPI) => {
-  const token = thunkAPI.getState().auth.user.token
-  const data = await photoService.comment(
-    { comment: commentData.comment },
-    commentData.id,
-    token
-    );
-
-  // Check for errors
-    if(data.errors ) {
-        return thunkAPI.rejectWithValue(data.errors[0])
-    }
-
-  return data;
 })
 
 export const { resetMessage } = photoSlice.actions
