@@ -14,10 +14,15 @@ app.post('/createproduct', (req, res) => {
     const name = req.body.name;
     const price = req.body.price;
 
+    if(!name) {
+        res.status(422).json({ message: "O campo nome é obrigatório!"})
+        return
+    }
+
     console.log(name)
     console.log(price)
 
-    res.json({ message: ` O produto ${name} foi criado com sucesso!` })
+    res.status(201).json({ message: ` O produto ${name} foi criado com sucesso!` })
 })
 
 // routes 
