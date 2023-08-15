@@ -2,6 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+// 4 - component import
+import FirstComponent from './components/FirstComponent';
+
 function App() {
 
   // 1- vars 
@@ -23,6 +26,7 @@ function App() {
       <p>Está trabalhando!</p>
     )}
     <h3>{ userGreeting(name) }</h3>
+    <FirstComponent />
    </div>
   );
 }
