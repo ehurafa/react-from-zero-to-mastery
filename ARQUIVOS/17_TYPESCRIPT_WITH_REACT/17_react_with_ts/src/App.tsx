@@ -5,6 +5,10 @@ import './App.css';
 // 4 - component import
 import FirstComponent from './components/FirstComponent';
 
+// 5 - destructuring props
+import SecondComponent from "./components/SecondComponent";
+import Destructuring from './components/Destructuring';
+
 function App() {
 
   // 1- vars 
@@ -27,6 +31,8 @@ function App() {
     )}
     <h3>{ userGreeting(name) }</h3>
     <FirstComponent />
+    <SecondComponent name="Second" />
+    <Destructuring title="First Post" content="Other content" commentsQty={5} tags={['js', 'ts']} />
    </div>
   );
 }
