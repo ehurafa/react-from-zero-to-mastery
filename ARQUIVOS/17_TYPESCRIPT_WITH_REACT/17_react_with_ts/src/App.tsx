@@ -9,6 +9,9 @@ import FirstComponent from './components/FirstComponent';
 import SecondComponent from "./components/SecondComponent";
 import Destructuring from './components/Destructuring';
 
+// 6 - useState
+import State from './components/State';
+
 function App() {
 
   // 1- vars 
@@ -33,6 +36,7 @@ function App() {
     <FirstComponent />
     <SecondComponent name="Second" />
     <Destructuring title="First Post" content="Other content" commentsQty={5} tags={['js', 'ts']} />
+    <State />
    </div>
   );
 }
