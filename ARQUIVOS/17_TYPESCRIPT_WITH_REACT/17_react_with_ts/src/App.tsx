@@ -12,6 +12,9 @@ import Destructuring, { Category } from './components/Destructuring';
 // 6 - useState
 import State from './components/State';
 
+// 8 - type
+type textOrNull = string | null;
+
 function App() {
 
   // 1- vars 
@@ -23,6 +26,13 @@ function App() {
   const userGreeting = (name: string): string => {
     return `Olá, ${name}!`;
   };
+
+  // 8 type
+  const myText: textOrNull = "Has an text here";
+  let mySecondText:textOrNull = null;
+
+  mySecondText = 'hi'
+
 
   return (
    <div className="app">
@@ -43,6 +53,12 @@ function App() {
       category={ Category.TS }
       />
     <State />
+    {myText && (
+      <p>Tem texto na variável</p>
+    )}
+    { mySecondText && (
+      <p>tem texto na variável</p>
+    )}
    </div>
   );
 }
