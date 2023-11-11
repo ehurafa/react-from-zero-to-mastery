@@ -35,3 +35,8 @@
     cursor: pointer;
     transition: .4s;
 }
+
+#navbar form button:hover {
+    background-color: transparent;
+    color: #f7d354;
+}
